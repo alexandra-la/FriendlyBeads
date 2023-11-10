@@ -1,0 +1,7 @@
+{
+  "name": "Friendly Beads",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
