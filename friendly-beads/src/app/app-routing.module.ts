@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'signin',
+    loadChildren: () => import('./signin/signin.module').then( m => m.SigninPageModule)
+  },
+  {
+    path: 'account',
+    loadChildren: () => import('./account/account.module').then( m => m.AccountPageModule)
+  },
+  {
+    path: 'searching',
+    loadChildren: () => import('./searching/searching.module').then( m => m.SearchingPageModule)
+  },
+  {
+    path: 'bracelet-maker',
+    loadChildren: () => import('./bracelet-maker/bracelet-maker.module').then( m => m.BraceletMakerPageModule)
+  },
 ];
 
 @NgModule({
