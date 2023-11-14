@@ -26,9 +26,13 @@
   text-decoration: none;
 }
 
-.button-container {
+/*.button-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80%;
+}*/
+ion-img::part(image){
+  width:500px;
+  padding: auto;
 }

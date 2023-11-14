@@ -1,19 +1,23 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      <div class="ion-text-center">
-        Friendly Beads
+      <!--Come back and center image, how to center image?-->
+      <ion-img src="../assets/imgs/friendly-logo.png"></ion-img>
+      <div class="button-container">
+        <button ion-buttton (click)="goToSignIn()">Sign-In</button>
       </div>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="button-container">
-    <button ion-buttton (click)="goToSignIn()">Sign-In</button>
-  </div>
+  <ion-searchbar></ion-searchbar>
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <strong>Welcome to Friendly Beads!</strong>
+    Your home for to design beaded friendship bracelets! Learn how to get started in the tutorial below. Create an account or sign in!
+    Search for designs and save them to your account! Make your own designs and shar them by clicking on the plus!.
   </div>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="secondary" (click)="goToBraceletMaker()" ><ion-icon name="add"></ion-icon></ion-fab-button>
+  </ion-fab>
 </ion-content>
