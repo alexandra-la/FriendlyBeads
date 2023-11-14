@@ -12,5 +12,7 @@ export class HomePage {
   goToSignIn(){
     this.navCtrl.navigateForward('signin')
   }
-
+  goToBraceletMaker(){
+    this.navCtrl.navigateForward('bracelet-maker')
+  }
 }
