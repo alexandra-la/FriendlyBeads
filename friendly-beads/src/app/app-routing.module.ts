@@ -26,7 +26,11 @@ const routes: Routes = [
   {
     path: 'bracelet-maker',
     loadChildren: () => import('./bracelet-maker/bracelet-maker.module').then( m => m.BraceletMakerPageModule)
+  },  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+
 ];
 
 @NgModule({
