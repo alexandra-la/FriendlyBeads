@@ -1,19 +1,19 @@
 <ion-content [fullscreen]="true">
   <div class="flex-center">
-    <ion-card>
+    <ion-card> <!--Create floating card to hold sign in fields-->
       <ion-card-header>
         <ion-card-title color="primary">Login</ion-card-title>
       </ion-card-header>
     
       <ion-card-content>
-        <ion-item>
+        <ion-item> <!--Email Field-->
           <ion-input label="Email" labelPlacement="floating" placeholder="example@example.com" color="secondary" type="email"></ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item> <!--Password Field-->
           <ion-input label="Password" labelPlacement="floating" color="secondary" type="password"></ion-input>
         </ion-item>
-        <ion-button class="ion-text-wrap" style="max-width: 235px;" color="danger" (click)="goToRegister()">Don't have an account?
-           Register</ion-button> <ion-button color="primary" size="default">Submit</ion-button>
+        <!--Register Button--><ion-button class="ion-text-wrap" style="max-width: 235px;" color="danger" (click)="goToRegister()">Don't have an account?
+           Register</ion-button> <!--Submit Button--><ion-button color="primary" size="default">Submit</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
