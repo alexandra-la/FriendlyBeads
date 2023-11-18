@@ -1,4 +1,4 @@
-const router = require('express').Router
+const router = require('express').Router()
 const User = require('../models/user')
 
 router.get('/',(req,res)=>{
@@ -9,3 +9,5 @@ router.get('/',(req,res)=>{
     })
     
 })
+
+module.exports = router

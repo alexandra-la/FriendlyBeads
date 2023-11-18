@@ -1,10 +1,10 @@
-import * as connection from '/PrivateInfo/mongodbconnect.json'
+require('dotenv').config({ path: '.env' });
 
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const port = process.env.PORT || 3000
-const connectString = connection;
+
 
 //Routes
 const userRoutes = require('./api/UserRoutes')
@@ -19,7 +19,7 @@ app.get('/',(req,res)=>{
 
 app.use('/users', userRoutes)
 
-mongoose.connect(connectString, {useUnifiedTopology :true}).then(()=>{
+mongoose.connect(process.env.MONGODB, {useUnifiedTopology :true}).then(()=>{
 
     app.listen(port,()=>{
         console.log('app running...')
