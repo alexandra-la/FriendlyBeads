@@ -1,7 +1,10 @@
+import * as connection from '/PrivateInfo/mongodbconnect.json'
+
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const port = process.env.PORT || 3000
+const connectString = connection;
 
 //Routes
 const userRoutes = require('./api/UserRoutes')
@@ -16,6 +19,9 @@ app.get('/',(req,res)=>{
 
 app.use('/users', userRoutes)
 
-app.listen(port,()=>{
-    console.log('app running')
-})
+mongoose.connect(connectString, {useUnifiedTopology :true}).then(()=>{
+
+    app.listen(port,()=>{
+        console.log('app running...')
+    })
+}).catch(err=>console.log(err))
