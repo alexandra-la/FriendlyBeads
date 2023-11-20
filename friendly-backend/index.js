@@ -1,7 +1,10 @@
+require('dotenv').config({ path: '.env' });
+
 const express = require('express')
-const mongoos = require('mongoose')
+const mongoose = require('mongoose')
 const cors = require('cors')
 const port = process.env.PORT || 3000
+
 
 //Routes
 const userRoutes = require('./api/UserRoutes')
@@ -16,6 +19,9 @@ app.get('/',(req,res)=>{
 
 app.use('/users', userRoutes)
 
-app.listen(port,()=>{
-    console.log('app running')
-})
+mongoose.connect(process.env.MONGODB, {useUnifiedTopology :true}).then(()=>{
+
+    app.listen(port,()=>{
+        console.log('app running...')
+    })
+}).catch(err=>console.log(err))
