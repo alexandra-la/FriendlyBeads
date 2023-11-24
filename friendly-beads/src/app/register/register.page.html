@@ -4,19 +4,22 @@
       <ion-card-header>
         <ion-card-title color="primary">Register</ion-card-title>
       </ion-card-header>
-    
+
       <ion-card-content>
         <ion-item> <!--Email Field-->
-          <ion-input label="Email" labelPlacement="floating" placeholder="example@example.com" color="secondary" type="email"></ion-input>
+          <ion-input label="Email" [(ngModel)]="email" labelPlacement="floating" placeholder="example@example.com" color="secondary" type="email"></ion-input>
+        </ion-item>
+        <ion-item> <!--Username Field-->
+          <ion-input label="Username" [(ngModel)]="username" labelPlacement="floating" placeholder="username" color="secondary" type="username"></ion-input>
         </ion-item>
         <ion-item> <!--Password Field-->
-          <ion-input label="Password" labelPlacement="floating" color="secondary" type="password"></ion-input>
+          <ion-input label="Password" [(ngModel)]="password" labelPlacement="floating" color="secondary" type="password"></ion-input>
         </ion-item>
         <ion-item> <!--Password Field-->
           <ion-input label="Confirm Password" labelPlacement="floating" color="secondary" type="password"></ion-input>
         </ion-item>
         <!--Back to sign in Button--><ion-button class="ion-text-wrap" style="max-width: 260px;" color="success" (click)="goToSignIn()">Have an account already?
-           Sign-In</ion-button> <!--Submit Button--><ion-button color="primary" size="default">Submit</ion-button>
+           Sign-In</ion-button> <!--Submit Button--><ion-button color="primary" size="default" (click)="register()">Submit</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
