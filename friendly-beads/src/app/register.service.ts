@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class RegisterService {
   username: string
    //@ts-ignore
   password: string
-  constructor(private http:HttpClient, private router: Router) { }
+  constructor(private http:HttpClient, private router: Router, private fireauth: AngularFireAuth) { }
 
   register(Uemail:string, Uusername: string,Upassword:string){
     let user = {
@@ -24,5 +26,18 @@ export class RegisterService {
       this.router.navigateByUrl('signin',{replaceUrl: true})})
 
     console.log(user)
+  }
+  signup(Uemail: string, Upassword: string) {
+    this.fireauth
+    .createUserWithEmailAndPassword(Uemail, Upassword)
+      .then(res => {
+        if (res.user) {
+          console.log(res.user);
+        }
+      })
+      .catch(err => {
+        console.log(`login failed ${err}`);
+        const error = err.message;
+      });
   }
 }

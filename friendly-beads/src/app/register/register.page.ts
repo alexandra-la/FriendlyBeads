@@ -22,5 +22,5 @@ export class RegisterPage implements OnInit {
     this.navCtrl.navigateForward('signin')
   }
   register(){
-    this.Registerservice.register(this.email,this.username, this.password)}
+    this.Registerservice.signup(this.email, this.password)}
 }
