@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { RegisterService } from '../register.service';
 
 @Component({
   selector: 'app-register',
@@ -7,12 +8,19 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
-  constructor(private navCtrl: NavController) { }
+  //@ts-ignore
+  email: string
+   //@ts-ignore
+  username: string
+   //@ts-ignore
+  password: string
+  constructor(private navCtrl: NavController, public Registerservice: RegisterService) { }
 
   ngOnInit() {
   }
   goToSignIn(){
     this.navCtrl.navigateForward('signin')
   }
+  register(){
+    this.Registerservice.register(this.email,this.username, this.password)}
 }

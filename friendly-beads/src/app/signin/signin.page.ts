@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { SigninPageForm } from './signin.page.form';
 import { HttpClient } from '@angular/common/http';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-signin',
@@ -11,13 +12,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SigninPage implements OnInit {
  //@ts-ignore
-  form: FormGroup;
+  form: FormGroup
   //@ts-ignore
-  email: string;
+  email: string
   //@ts-ignore
-  password: string;
+  password: string
 
-  constructor(private http: HttpClient, private navCtrl: NavController, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private navCtrl: NavController, private formBuilder: FormBuilder, public LoginService: LoginService) { }
 
   ngOnInit() {
     this.form = new SigninPageForm(this.formBuilder).createForm();
@@ -30,14 +31,8 @@ export class SigninPage implements OnInit {
   gotToHome(){
     this.navCtrl.navigateForward('home')
   }
-  login(){
-    let credentials = {
-      email: this.email,
-      password: this.password
-    }
-
-
-    console.log(credentials)
-  }
+  login (){
+  this.LoginService.login(this.email, this.password)
+}
 
 }
