@@ -16,7 +16,7 @@ export class RegisterService {
   password: string
   constructor(private http:HttpClient, private router: Router, private fireauth: AngularFireAuth) { }
 
-  register(Uemail:string, Uusername: string,Upassword:string){
+ /* register(Uemail:string, Uusername: string,Upassword:string){
     let user = {
       email: Uemail,
       username: Uusername,
@@ -26,13 +26,14 @@ export class RegisterService {
       this.router.navigateByUrl('signin',{replaceUrl: true})})
 
     console.log(user)
-  }
+  }*/
   signup(Uemail: string, Upassword: string) {
     this.fireauth
     .createUserWithEmailAndPassword(Uemail, Upassword)
       .then(res => {
         if (res.user) {
           console.log(res.user);
+          this.router.navigateByUrl('signin',{replaceUrl: true})
         }
       })
       .catch(err => {
