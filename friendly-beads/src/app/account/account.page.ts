@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-account',
@@ -7,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccountPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) {}
 
+  goHome(){
+    this.navCtrl.navigateForward('home')
+  }
   ngOnInit() {
   }
 
