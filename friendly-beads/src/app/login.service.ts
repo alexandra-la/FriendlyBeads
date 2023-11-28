@@ -11,6 +11,9 @@ export class LoginService {
   email: string
   //@ts-ignore
   password: string
+  //@ts-ignore
+  public routeFrom: any;
+
   constructor(private http:HttpClient, private router: Router, private fireauth: AngularFireAuth) {}
   /*login(Uemail:string, Upassword:string){
     let credentials = {
@@ -26,17 +29,25 @@ export class LoginService {
 
     console.log(credentials)
   } */
-  login(Uemail: string, Upassword: string) {
+  login(Uemail: string, Upassword: string, route:any) {
     this.fireauth.signInWithEmailAndPassword(Uemail, Upassword)
       .then(res => {
         if (res.user) {
           console.log(res.user);
-          this.router.navigateByUrl('account',{replaceUrl: true})
+          if(route=="account"){
+            this.router.navigateByUrl('account',{replaceUrl: true})
+          }else if(route=="bracelet"){
+            this.router.navigateByUrl('bracelet-maker',{replaceUrl: true})
+          }
         }
       })
       .catch(err => {
         console.log(`login failed ${err}`);
         const error = err.message;
       });
-    }
+  }
+  changeRoute(routeFrom: any){
+    this.routeFrom= routeFrom;
+  }
+
 }

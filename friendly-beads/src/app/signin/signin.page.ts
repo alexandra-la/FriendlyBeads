@@ -32,7 +32,7 @@ export class SigninPage implements OnInit {
     this.navCtrl.navigateForward('home')
   }
   login (){
-  this.LoginService.login(this.email, this.password)
+  this.LoginService.login(this.email, this.password, this.LoginService.routeFrom)
 }
 
 }
