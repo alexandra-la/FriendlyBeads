@@ -1,13 +1,62 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>BraceletMaker</ion-title>
+    <ion-title>
+      <ion-img src="../assets/imgs/FriendlyBeads.png" (click)="goHome()"></ion-img>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">BraceletMaker</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-content padding>
+    <form [formGroup]="createBraceletForm" (submit)="createBracelet() ">
+      <ion-item>
+        <ion-label stacked>Name</ion-label>
+        <ion-input formControlName="Name" type="text" placeholder="What's this bracelet called?">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Bracelet Description</ion-label>
+        <ion-input formControlName="Description" type="text" placeholder="Enter description">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Number of strands</ion-label>
+        <ion-input formControlName="Strands" type="text" placeholder="How many strands of thread will this bracelet use?">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Bead Type</ion-label>
+        <ion-radio-group formControlName="Beads" value="">
+          <ion-radio value="pony-beads">Pony Beads</ion-radio>
+          <ion-radio value="seed-beads">Seed Beads</ion-radio>
+          <ion-radio value="heishi-beads">Heishi Beads</ion-radio>
+        </ion-radio-group>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Colors</ion-label>
+        <ion-checkbox-group formControlName="Colors">
+          <ion-checkbox value="blue">Blue</ion-checkbox> <ion-checkbox value="purple">Purple</ion-checkbox>
+          <ion-checkbox vlaue="red">Red</ion-checkbox> <ion-checkbox value="pink">Pink</ion-checkbox>
+          <ion-checkbox value="green">Green</ion-checkbox> <ion-checkbox value="yellow">Yellow</ion-checkbox>
+          <ion-checkbox value="orange">Orange</ion-checkbox> <ion-checkbox value="white">White</ion-checkbox>
+          <ion-checkbox value="black">Black</ion-checkbox> <ion-checkbox value="grey">Grey</ion-checkbox>
+        </ion-checkbox-group>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Are there any letters or words on your bracelet?</ion-label>
+        <ion-input formControlName="Letters" type="text" placeholder="Enter letters/words here"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Enter a tag for your bracelet</ion-label>
+        <ion-input formControlName="Tags" type="text" placeholder="Enter tags here"></ion-input>
+      </ion-item>
+      <ion-button expand="block" type="submit" [disabled]="!createBraceletForm.valid">
+        Add Bracelet
+      </ion-button>
+    </form>
+  </ion-content>
+
 </ion-content>
