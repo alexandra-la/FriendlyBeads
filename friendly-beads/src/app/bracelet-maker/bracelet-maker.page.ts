@@ -13,10 +13,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
   styleUrls: ['./bracelet-maker.page.scss'],
 })
 export class BraceletMakerPage implements OnInit {
-  createBraceletForm!: FormGroup;
+  createBraceletForm! : FormGroup;
   auth = getAuth();
   user = this.auth.currentUser;
-  constructor( private router: Router, private navCtrl: NavController, private readonly loadingCtrl: LoadingController, private readonly alertCtrl: AlertController, formBuilder: FormBuilder, public Fauth: AngularFireAuth) { }
+  constructor( private router: Router, private navCtrl: NavController, private readonly loadingCtrl: LoadingController,
+    private readonly alertCtrl: AlertController, formBuilder: FormBuilder, public Fauth: AngularFireAuth) { }
 
   goHome(){
     this.navCtrl.navigateForward('home')
@@ -28,7 +29,6 @@ export class BraceletMakerPage implements OnInit {
       this.router.navigateByUrl('/signin')
     }
     this.createBraceletForm = new FormGroup({
-      'Uemail': new FormControl(this.user, Validators.required),
       'Name': new FormControl('', Validators.required),
       'Description':  new FormControl('', Validators.required),
       'Strands':  new FormControl('', Validators.required),

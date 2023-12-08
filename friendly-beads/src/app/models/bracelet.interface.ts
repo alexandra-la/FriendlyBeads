@@ -1,6 +1,5 @@
 export interface Bracelet {
   id: string;
-  userEmail: string;
   name: string;
   description: string;
   beadtype: string;
