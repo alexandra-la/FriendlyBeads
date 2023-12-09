@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {getAuth} from '@angular/fire/auth';
+import {getAuth, onAuthStateChanged} from '@angular/fire/auth';
 import { getApp } from '@angular/fire/app';
 import { addDoc, collection, getFirestore } from '@angular/fire/firestore';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
@@ -24,12 +24,15 @@ export class BraceletMakerPage implements OnInit {
   }
 
   ngOnInit(): void{
-    const user = localStorage.getItem('User')
-    if(user==null){
-      this.router.navigateByUrl('/signin')
-    }
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+    if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/auth.user
+      const uid = user.uid;
+    // ...
     this.createBraceletForm = new FormGroup({
-      'User': new FormControl(this.username?.uid, Validators.required),
+      'User': new FormControl(uid, Validators.required),
       'Name': new FormControl('', Validators.required),
       'Description':  new FormControl('', Validators.required),
       'Strands':  new FormControl('', Validators.required),
@@ -39,6 +42,12 @@ export class BraceletMakerPage implements OnInit {
       'Letters':  new FormControl('', Validators.required),
       'Tags':  new FormControl('', Validators.required)
     })
+    } else {
+    // User is signed out
+    // ...
+      this.router.navigateByUrl('/signin')
+    }
+    });
   }
   createBracelet(): void{
     const firebaseApp = getApp();
