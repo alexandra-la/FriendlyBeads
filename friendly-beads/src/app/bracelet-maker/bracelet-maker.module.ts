@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { BraceletMakerPageRoutingModule } from './bracelet-maker-routing.module';
 
 import { BraceletMakerPage } from './bracelet-maker.page';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    BraceletMakerPageRoutingModule
+    BraceletMakerPageRoutingModule,
+    ReactiveFormsModule,
+    FirestoreModule
   ],
   declarations: [BraceletMakerPage]
 })
