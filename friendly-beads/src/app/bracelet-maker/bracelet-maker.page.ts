@@ -15,7 +15,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class BraceletMakerPage implements OnInit {
   createBraceletForm! : FormGroup;
   auth = getAuth();
-  user = this.auth.currentUser;
+  username = this.auth.currentUser;
   constructor( private router: Router, private navCtrl: NavController, private readonly loadingCtrl: LoadingController,
     private readonly alertCtrl: AlertController, formBuilder: FormBuilder, public Fauth: AngularFireAuth) { }
 
@@ -29,11 +29,13 @@ export class BraceletMakerPage implements OnInit {
       this.router.navigateByUrl('/signin')
     }
     this.createBraceletForm = new FormGroup({
+      'User': new FormControl(this.username?.uid, Validators.required),
       'Name': new FormControl('', Validators.required),
       'Description':  new FormControl('', Validators.required),
       'Strands':  new FormControl('', Validators.required),
       'Beads':   new FormControl('', Validators.required),
-      'Colors':  new FormControl('', Validators.required),
+      'Color1':  new FormControl('', Validators.required),
+      'Color2':  new FormControl('', Validators.required),
       'Letters':  new FormControl('', Validators.required),
       'Tags':  new FormControl('', Validators.required)
     })
@@ -43,6 +45,7 @@ export class BraceletMakerPage implements OnInit {
     const db = getFirestore(firebaseApp);
     const braceletCollection = collection(db, 'bracelets');
     addDoc(braceletCollection, this.createBraceletForm.value);
+    this.navCtrl.navigateForward('account')
   }
 
 }

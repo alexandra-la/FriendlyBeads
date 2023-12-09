@@ -36,14 +36,28 @@
         </ion-radio-group>
       </ion-item>
       <ion-item>
-        <ion-label stacked>Colors</ion-label>
-        <ion-checkbox-group formControlName="Colors">
-          <ion-checkbox value="blue">Blue</ion-checkbox> <ion-checkbox value="purple">Purple</ion-checkbox>
-          <ion-checkbox vlaue="red">Red</ion-checkbox> <ion-checkbox value="pink">Pink</ion-checkbox>
-          <ion-checkbox value="green">Green</ion-checkbox> <ion-checkbox value="yellow">Yellow</ion-checkbox>
-          <ion-checkbox value="orange">Orange</ion-checkbox> <ion-checkbox value="white">White</ion-checkbox>
-          <ion-checkbox value="black">Black</ion-checkbox> <ion-checkbox value="grey">Grey</ion-checkbox>
-        </ion-checkbox-group>
+        <ion-label stacked>Enter Your Colors</ion-label>
+        <ion-label stacked>Choose Color 1</ion-label>
+        <ion-radio-group formControlName="Color1" value="">
+          <ion-radio value="Red">Red</ion-radio>
+          <ion-radio value="Blue">Blue</ion-radio>
+          <ion-radio value="Green">Green</ion-radio>
+          <ion-radio value="Purple">Purple</ion-radio>
+          <ion-radio value="Yellow">Yellow</ion-radio>
+          <ion-radio value="Black">Black</ion-radio>
+          <ion-radio value="White">White</ion-radio>
+        </ion-radio-group>
+        <ion-label stacked>Choose Color 2</ion-label>
+        <ion-radio-group formControlName="Color2" value="">
+          <ion-radio value="Red">Red</ion-radio>
+          <ion-radio value="Blue">Blue</ion-radio>
+          <ion-radio value="Green">Green</ion-radio>
+          <ion-radio value="Purple">Purple</ion-radio>
+          <ion-radio value="Yellow">Yellow</ion-radio>
+          <ion-radio value="Black">Black</ion-radio>
+          <ion-radio value="White">White</ion-radio>
+          <ion-radio value="None">None</ion-radio>
+        </ion-radio-group>
       </ion-item>
       <ion-item>
         <ion-label stacked>Are there any letters or words on your bracelet?</ion-label>
