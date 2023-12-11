@@ -2,13 +2,16 @@
   <ion-toolbar>
     <ion-title>
       <!--Come back and center image, how to center image?-->
-      <ion-img src="../assets/imgs/FriendlyBeads.png"></ion-img> <div class="button-container"><button ion-buttton (click)="goToSignIn()">Sign-In</button></div>
+      <ion-grid><ion-row>
+      <ion-col><ion-img src="../assets/imgs/FriendlyBeads.png"></ion-img></ion-col>
+      <ion-col><ion-buttons><ion-button (click)="goToSearch()"><ion-icon slot="icon-only" name="search-outline"></ion-icon></ion-button>
+        <ion-button  fill="solid" (click)="goToSignIn()">Sign-In</ion-button></ion-buttons></ion-col>
+      </ion-row></ion-grid>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-searchbar></ion-searchbar>
   <div id="container">
     <strong>Welcome to Friendly Beads!</strong>
     <p>

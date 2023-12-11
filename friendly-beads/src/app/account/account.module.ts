@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { AccountPageRoutingModule } from './account-routing.module';
 
 import { AccountPage } from './account.page';
+import { FirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AccountPageRoutingModule
+    AccountPageRoutingModule,
+    FirestoreModule
   ],
   declarations: [AccountPage]
 })
