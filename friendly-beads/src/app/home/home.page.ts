@@ -19,6 +19,9 @@ export class HomePage {
     this.navCtrl.navigateForward('bracelet-maker')
     this.loginS.changeRoute('bracelet')
   }
+  goToSearch(){
+    this.navCtrl.navigateForward('searching')
+  }
 
   ngOnInit(): void{
   }
