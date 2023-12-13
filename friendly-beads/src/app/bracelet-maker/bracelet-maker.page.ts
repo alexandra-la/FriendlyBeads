@@ -6,13 +6,17 @@ import { getApp } from '@angular/fire/app';
 import { addDoc, collection, getFirestore } from '@angular/fire/firestore';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
+AngularFireModule.initializeApp(environment.firebase)
 @Component({
   selector: 'app-bracelet-maker',
   templateUrl: './bracelet-maker.page.html',
   styleUrls: ['./bracelet-maker.page.scss'],
 })
+
 export class BraceletMakerPage implements OnInit {
+
   createBraceletForm! : FormGroup;
   auth = getAuth();
   username = this.auth.currentUser;
@@ -30,6 +34,7 @@ export class BraceletMakerPage implements OnInit {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
+
     // ...
     this.createBraceletForm = new FormGroup({
       'User': new FormControl(uid, Validators.required),
@@ -50,7 +55,8 @@ export class BraceletMakerPage implements OnInit {
     });
   }
   createBracelet(): void{
-    const firebaseApp = getApp();
+
+    const firebaseApp = getApp("friendly-beads");
     const db = getFirestore(firebaseApp);
     const braceletCollection = collection(db, 'bracelets');
     addDoc(braceletCollection, this.createBraceletForm.value);
