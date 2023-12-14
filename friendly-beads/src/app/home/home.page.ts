@@ -27,7 +27,6 @@ export class HomePage {
   }
 
   ngOnInit(): void{
-    AngularFireModule.initializeApp(environment.firebase);
-    console.log(getApps().length);
+    console.log(getApps());
   }
 }

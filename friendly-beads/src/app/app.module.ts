@@ -13,7 +13,8 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FirestoreModule } from '@angular/fire/firestore';
-
+import { initializeApp } from 'firebase/app';
+initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
   imports: [AngularFireModule.initializeApp(environment.firebase),BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {

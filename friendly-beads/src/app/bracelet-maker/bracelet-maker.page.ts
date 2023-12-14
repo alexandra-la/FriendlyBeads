@@ -7,8 +7,8 @@ import { addDoc, collection, getFirestore } from '@angular/fire/firestore';
 import { AlertController, LoadingController, NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFireModule } from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
-AngularFireModule.initializeApp(environment.firebase)
+
+
 @Component({
   selector: 'app-bracelet-maker',
   templateUrl: './bracelet-maker.page.html',
@@ -18,10 +18,21 @@ AngularFireModule.initializeApp(environment.firebase)
 export class BraceletMakerPage implements OnInit {
 
   createBraceletForm! : FormGroup;
-  auth = getAuth();
-  username = this.auth.currentUser;
+  //auth = getAuth();
+  //username = this.auth.currentUser;
   constructor( private router: Router, private navCtrl: NavController, private readonly loadingCtrl: LoadingController,
-    private readonly alertCtrl: AlertController, formBuilder: FormBuilder, public Fauth: AngularFireAuth) { }
+    private readonly alertCtrl: AlertController, formBuilder: FormBuilder, public Fauth: AngularFireAuth) {
+      this.createBraceletForm = new FormGroup({
+        'Name': new FormControl(''),
+        'Description':  new FormControl(''),
+        'Strands':  new FormControl(''),
+        'Beads':   new FormControl(''),
+        'Color1':  new FormControl(''),
+        'Color2':  new FormControl(''),
+        'Letters':  new FormControl(''),
+        'Tags':  new FormControl('')
+      })
+     }
 
   goHome(){
     this.navCtrl.navigateForward('home')
@@ -30,23 +41,12 @@ export class BraceletMakerPage implements OnInit {
   ngOnInit(): void{
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-    if (user) {
+    if (user || user!=null) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
 
     // ...
-    this.createBraceletForm = new FormGroup({
-      'User': new FormControl(uid, Validators.required),
-      'Name': new FormControl('', Validators.required),
-      'Description':  new FormControl('', Validators.required),
-      'Strands':  new FormControl('', Validators.required),
-      'Beads':   new FormControl('', Validators.required),
-      'Color1':  new FormControl('', Validators.required),
-      'Color2':  new FormControl('', Validators.required),
-      'Letters':  new FormControl('', Validators.required),
-      'Tags':  new FormControl('', Validators.required)
-    })
     } else {
     // User is signed out
     // ...
@@ -56,7 +56,7 @@ export class BraceletMakerPage implements OnInit {
   }
   createBracelet(): void{
 
-    const firebaseApp = getApp("friendly-beads");
+    const firebaseApp = getApp("[DEFAULT]");
     const db = getFirestore(firebaseApp);
     const braceletCollection = collection(db, 'bracelets');
     addDoc(braceletCollection, this.createBraceletForm.value);
