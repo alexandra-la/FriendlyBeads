@@ -16,6 +16,10 @@
         <h3>{{bracelet.get("Beads")}}  First Color: {{bracelet.get("Color1")}}  Second Color: {{bracelet.get("Color2")}}<p></p>
        Letters: {{bracelet.get("Letters")}} Strands: {{bracelet.get("Strands")}}</h3>
       </ion-label>
+      <button expand="block" (click)="deleteDesign(bracelet.get('Name'))" ion-button color="secondary" icon-start>
+        <ion-icon name="trash"></ion-icon>
+        Trash
+      </button>
     </ion-item>
   </div>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">

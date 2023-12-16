@@ -26,6 +26,11 @@ export class AccountPage implements OnInit {
     this.navCtrl.navigateForward('bracelet-maker')
   }
 
+  async deleteDesign(name: any){
+    console.log(name);
+    await this.dataService.deleteDoc(name);
+    console.log("deleted");
+  }
 
   ngOnInit() {
     const auth = getAuth();
