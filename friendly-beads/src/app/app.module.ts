@@ -13,14 +13,16 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FirestoreModule } from '@angular/fire/firestore';
-
+import { initializeApp } from 'firebase/app';
+import { Firestore } from '@angular/fire/firestore';
+initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {
+  imports: [AngularFireModule.initializeApp(environment.firebase),BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: !isDevMode(),
   // Register the ServiceWorker as soon as the application is stable
   // or after 30 seconds (whichever comes first).
-  registrationStrategy: 'registerWhenStable:30000'}),  AngularFireModule.initializeApp(environment.firebase),
+  registrationStrategy: 'registerWhenStable:30000'}),
   AngularFireAuthModule, FormsModule, ReactiveFormsModule, FirestoreModule
 ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

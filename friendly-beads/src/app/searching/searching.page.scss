@@ -1,0 +1,7 @@
+ion-img::part(image){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width:500px;
+  padding-left: 35%;
+}

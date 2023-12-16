@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { LoginService } from '../login.service';
+import { getApps } from '@angular/fire/app';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -16,13 +19,14 @@ export class HomePage {
     this.loginS.changeRoute('account')
   }
   goToBraceletMaker(){
-    this.navCtrl.navigateForward('bracelet-maker')
     this.loginS.changeRoute('bracelet')
+    this.navCtrl.navigateForward('bracelet-maker')
   }
   goToSearch(){
     this.navCtrl.navigateForward('searching')
   }
 
   ngOnInit(): void{
+    console.log(getApps());
   }
 }
