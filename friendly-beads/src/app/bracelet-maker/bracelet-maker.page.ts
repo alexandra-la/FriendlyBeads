@@ -23,6 +23,7 @@ export class BraceletMakerPage implements OnInit {
   constructor( private router: Router, private navCtrl: NavController, private readonly loadingCtrl: LoadingController,
     private readonly alertCtrl: AlertController, formBuilder: FormBuilder, public Fauth: AngularFireAuth) {
       this.createBraceletForm = new FormGroup({
+        'UserEmail': new FormControl(''),
         'Name': new FormControl(''),
         'Description':  new FormControl(''),
         'Strands':  new FormControl(''),
@@ -41,7 +42,7 @@ export class BraceletMakerPage implements OnInit {
   ngOnInit(): void{
     const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-    if (user || user!=null) {
+    if (user) {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
@@ -50,7 +51,7 @@ export class BraceletMakerPage implements OnInit {
     } else {
     // User is signed out
     // ...
-      this.router.navigateByUrl('/signin')
+      this.router.navigateByUrl('/signin');
     }
     });
   }

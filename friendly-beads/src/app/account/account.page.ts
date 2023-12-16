@@ -5,6 +5,7 @@ import { NavController } from '@ionic/angular';
 import { Bracelet } from '../models/bracelet.interface';
 import { collection, getFirestore, query, where } from '@angular/fire/firestore';
 import { getApp } from 'firebase/app';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-account',
@@ -14,10 +15,14 @@ import { getApp } from 'firebase/app';
 export class AccountPage implements OnInit {
    firebaseApp = getApp();
    db = getFirestore(this.firebaseApp);
-  constructor(private navCtrl: NavController, private router: Router,) {}
+  constructor(private navCtrl: NavController, private router: Router,private loginS: LoginService) {}
 
   goHome(){
     this.navCtrl.navigateForward('home')
+  }
+  goToBraceletMaker(){
+    this.loginS.changeRoute('bracelet')
+    this.navCtrl.navigateForward('bracelet-maker')
   }
 
 
@@ -29,8 +34,9 @@ export class AccountPage implements OnInit {
     // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
 
+
       } else {
-        this.router.navigateByUrl('/signin')
+        this.router.navigateByUrl('/signin');
       }
     });
   }

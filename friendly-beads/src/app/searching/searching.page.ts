@@ -19,6 +19,7 @@ export class SearchingPage implements OnInit {
   goHome(){
     this.navCtrl.navigateForward('home')
   }
+
   async filterList(evt: any){
     this.braceletList = this.dataService.filterList(evt);
   }

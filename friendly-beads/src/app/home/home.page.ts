@@ -27,6 +27,6 @@ export class HomePage {
   }
 
   ngOnInit(): void{
-    console.log(getApps());
+
   }
 }
