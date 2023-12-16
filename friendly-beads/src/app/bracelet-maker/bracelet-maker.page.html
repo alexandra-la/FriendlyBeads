@@ -9,20 +9,26 @@
 <ion-content [fullscreen]="true">
   <ion-content padding>
     <form [formGroup]="createBraceletForm" (submit)="createBracelet() ">
+
       <ion-item>
-        <ion-label stacked>Name</ion-label>
+        <ion-label >Enter your email</ion-label>
+        <ion-input formControlName="UserEmail" type="text" placeholder="What is your email?"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Name</ion-label>
         <ion-input formControlName="Name" type="text" placeholder="What's this bracelet called?">
         </ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>Bracelet Description</ion-label>
+        <ion-label>Bracelet Description</ion-label>
         <ion-input formControlName="Description" type="text" placeholder="Enter description">
         </ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label stacked>Number of strands</ion-label>
+        <ion-label>Number of strands</ion-label>
         <ion-input formControlName="Strands" type="text" placeholder="How many strands of thread will this bracelet use?">
         </ion-input>
       </ion-item>

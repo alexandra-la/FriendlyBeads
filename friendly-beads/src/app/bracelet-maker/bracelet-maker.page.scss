@@ -4,3 +4,9 @@ ion-img::part(image){
   align-items: center;
   max-width:500px;
 }
+ion-item {
+  ion-label {
+    flex: 0 0 200px;
+    width: 200px;
+  }
+}
