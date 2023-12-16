@@ -9,7 +9,7 @@
 <ng-container *ngIf="braceletList | async">
 <ion-content [fullscreen]="true">
     <ion-toolbar>
-      <ion-searchbar></ion-searchbar>
+      <ion-searchbar (ionInput)="filterList($event.target.value)" debounce="1000"></ion-searchbar>
     </ion-toolbar>
     <ion-item *ngFor="let bracelet of braceletList | async">
       <ion-label>

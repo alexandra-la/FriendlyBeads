@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { DataManagerService } from '../data-manager.service';
 import { AngularFireModule } from '@angular/fire/compat';
+import { getApp } from '@angular/fire/app';
+import { collection, getDocs, getFirestore, query, where } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-searching',
@@ -16,6 +18,9 @@ export class SearchingPage implements OnInit {
 
   goHome(){
     this.navCtrl.navigateForward('home')
+  }
+  async filterList(evt: any){
+    this.braceletList = this.dataService.filterList(evt);
   }
 
   ngOnInit() {
