@@ -9,8 +9,14 @@
 
 <ion-content [fullscreen]="true">
   <div id="container">
-    <div id="title"><strong>Account</strong></div>
-    <p>Building in progress</p>
+    <ion-item *ngFor="let bracelet of braceletList | async">
+      <ion-label>
+        <h1>{{ bracelet.get("Name")}} </h1>
+        <h2>{{bracelet.get("Description")}}</h2>
+        <h3>{{bracelet.get("Beads")}}  First Color: {{bracelet.get("Color1")}}  Second Color: {{bracelet.get("Color2")}}<p></p>
+       Letters: {{bracelet.get("Letters")}} Strands: {{bracelet.get("Strands")}}</h3>
+      </ion-label>
+    </ion-item>
   </div>
   <ion-fab slot="fixed" vertical="bottom" horizontal="end">
     <ion-fab-button color="secondary" (click)="goToBraceletMaker()" ><ion-icon name="add"></ion-icon></ion-fab-button>
