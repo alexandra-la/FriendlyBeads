@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SearchingPageRoutingModule } from './searching-routing.module';
 
 import { SearchingPage } from './searching.page';
+import { AngularFireModule } from '@angular/fire/compat';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchingPageRoutingModule
+    SearchingPageRoutingModule,
+    AngularFireModule
   ],
   declarations: [SearchingPage]
 })

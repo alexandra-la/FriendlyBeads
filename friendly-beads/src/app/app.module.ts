@@ -14,6 +14,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FirestoreModule } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
+import { Firestore } from '@angular/fire/firestore';
 initializeApp(environment.firebase);
 @NgModule({
   declarations: [AppComponent],
