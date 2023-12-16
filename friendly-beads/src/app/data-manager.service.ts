@@ -30,6 +30,12 @@ export class DataManagerService {
     return querySnapshot.docs;
   }
 
-
+  async filterByUser(user:any){
+    const firebaseApp = getApp("[DEFAULT]");
+    const db = getFirestore(firebaseApp);
+    const q = query(collection(db, "bracelets"), where("UserEmail", "==", user));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs;
+  }
 
 }
