@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Bracelet } from './models/bracelet.interface';
 import { Observable } from 'rxjs';
 import { getApp } from '@angular/fire/app';
-import { DocumentData, Firestore, FirestoreModule, collection, collectionData, getDocs, getFirestore, query, where } from '@angular/fire/firestore';
+import { DocumentData, Firestore, FirestoreModule, collection, collectionData, deleteDoc, doc, getDocs, getFirestore, query, where } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,7 @@ export class DataManagerService {
     const firebaseApp = getApp("[DEFAULT]");
     const db = getFirestore(firebaseApp);
     const querySnapshot = await getDocs(collection(db, "bracelets"));
-    const designs: DocumentData[] = [];
     querySnapshot.forEach((doc) => {
-      designs.push(doc.data());
       console.log(doc.data());
     })
     return querySnapshot.docs;
@@ -36,6 +34,17 @@ export class DataManagerService {
     const q = query(collection(db, "bracelets"), where("UserEmail", "==", user));
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs;
+  }
+
+  async deleteDoc(name: any){
+    console.log(name + "dataservice");
+    const firebaseApp = getApp("[DEFAULT]");
+    const db = getFirestore(firebaseApp);
+    const q = query(collection(db, "bracelets"), where("Name", "==", name));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(function(doc) {
+      deleteDoc(doc.ref);
+    })
   }
 
 }
