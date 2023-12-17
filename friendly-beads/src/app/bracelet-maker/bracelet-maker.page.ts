@@ -55,13 +55,19 @@ export class BraceletMakerPage implements OnInit {
     }
     });
   }
-  createBracelet(): void{
+  async createBracelet(): Promise<void>{
 
     const firebaseApp = getApp("[DEFAULT]");
     const db = getFirestore(firebaseApp);
     const braceletCollection = collection(db, 'bracelets');
     addDoc(braceletCollection, this.createBraceletForm.value);
-    this.navCtrl.navigateForward('account')
+    const loading = await this.loadingCtrl.create({
+      message: 'Creating bracelet...',
+      duration: 3000
+    });
+
+    loading.present().then(()=>this.navCtrl.navigateForward('account'));
+    loading.onDidDismiss().then(()=>window.location.reload());
   }
 
 }
